@@ -1,22 +1,11 @@
-mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.springcloud.entities
-  mapper-locations: classpath:mybatis/mapper/**/*.xml
-
 spring:
  profiles:
   active: dev
----
-spring:
- profiles: dev
-server:
-  port: 8001
+
 spring:
    datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521/ORCL
-    username: scott
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -30,8 +19,22 @@ spring:
     poolPreparedStatements: false
     maxPoolPreparedStatementPerConnectionSize: 20
     filters: stat,wall,slf4j,config
-    connectionProperties: password=xxxxx_tiger
     passwordCallbackClassName: com.springcloud.config.DbPasswordCallback
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.springcloud.entities
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+
+---
+spring:
+ profiles: dev
+server:
+  port: 8001
+spring:
+   datasource:
+    url: jdbc:oracle:thin:@localhost:1521/ORCL
+    username: scott
+    connectionProperties: password=xxxxx_tiger
 
 eureka:
    client:
@@ -44,29 +47,14 @@ eureka:
 ---
 spring:
  profiles: test
+
 server:
   port: 8002
 spring:
    datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@localhost:1521/ORCL
     username: scott
-    initialSize: 5
-    minIdle: 5
-    maxActive: 20
-    maxWait: 60000
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: SELECT 1 FROM DUAL
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: false
-    maxPoolPreparedStatementPerConnectionSize: 20
-    filters: stat,wall,slf4j,config
     connectionProperties: password=xxxxx_tiger
-    passwordCallbackClassName: com.springcloud.config.DbPasswordCallback
 
 eureka:
    client:
