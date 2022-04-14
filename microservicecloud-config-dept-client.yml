@@ -3,6 +3,18 @@ spring:
     active:
       - dev
 
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.springcloud.entities
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+
+---
+spring:
+  profiles: dev
+
+server:
+  port: 8001
 spring:
    datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -21,36 +33,6 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     filters: stat,wall,slf4j,config
     passwordCallbackClassName: com.springcloud.config.DbPasswordCallback
-mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.springcloud.entities
-  mapper-locations: classpath:mybatis/mapper/**/*.xml
-
----
-spring:
-  profiles: dev
-server:
-  port: 8001
-spring:
-   datasource:
-    url: jdbc:oracle:thin:@localhost:1521/ORCL
-    username: scott
-    connectionProperties: password=xxxxx_tiger
-
-eureka:
-   client:
-    service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/
-
----
-spring:
-  profiles: test
-
-server:
-  port: 8002
-
-spring:
-   datasource:
     url: jdbc:oracle:thin:@localhost:1521/ORCL
     username: scott
     connectionProperties: password=xxxxx_tiger
