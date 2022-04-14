@@ -3,7 +3,6 @@ spring:
     active:
       - dev
 
-
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
   type-aliases-package: com.springcloud.entities
@@ -11,8 +10,7 @@ mybatis:
 
 ---
 spring:
-  profiles: dev
-
+ profiles: dev
 server:
   port: 8001
 spring:
