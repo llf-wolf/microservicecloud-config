@@ -1,21 +1,17 @@
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.springcloud.entities
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+
 spring:
  profiles:
   active: dev
 ---
 spring:
  profiles: dev
-
 server:
   port: 8001
-mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.springcloud.entities
-  mapper-locations:
-  - classpath:mybatis/mapper/**/*.xml
-
 spring:
-   application:
-    name: microservicecloud-dept
    datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: oracle.jdbc.driver.OracleDriver
@@ -49,16 +45,8 @@ eureka:
 spring:
  profiles: test
 server:
-  port: 8001
-mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.springcloud.entities
-  mapper-locations:
-  - classpath:mybatis/mapper/**/*.xml
-
+  port: 8002
 spring:
-   application:
-    name: microservicecloud-dept
    datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: oracle.jdbc.driver.OracleDriver
