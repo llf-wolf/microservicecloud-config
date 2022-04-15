@@ -1,8 +1,11 @@
 spring:
   profiles:
     active:
-      - dev
+      - test
 ---
+server:
+  port: 8001
+
 spring:
   profiles: dev
   datasource:
@@ -31,15 +34,15 @@ mybatis:
   type-aliases-package: com.springcloud.entities
   mapper-locations: classpath:mybatis/mapper/**/*.xml
 
-server:
-  port: 8001
-
 eureka:
    client:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/
 
 ---
+server:
+  port: 8002
+
 spring:
   profiles: test
   datasource:
@@ -67,9 +70,6 @@ mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
   type-aliases-package: com.springcloud.entities
   mapper-locations: classpath:mybatis/mapper/**/*.xml
-
-server:
-  port: 8002
 
 eureka:
    client:
